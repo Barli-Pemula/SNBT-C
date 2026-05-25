@@ -31,7 +31,7 @@ export default function SecretButton() {
             className="fixed bottom-24 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl max-w-xs z-50 border border-[var(--color-peach)]"
           >
             <p className="text-sm font-medium text-center text-gray-800">
-              "{currentQuote}"
+              &quot;{currentQuote}&quot;
             </p>
             <button 
               onClick={() => setShowQuote(false)}

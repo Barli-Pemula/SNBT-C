@@ -21,6 +21,7 @@ export default function DoodleBackground() {
       duration: 10 + Math.random() * 10,
       rotate: Math.random() * 360,
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setElements(newElements);
   }, []);
 

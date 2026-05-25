@@ -42,9 +42,8 @@ export default function HasilPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="text-lg font-medium text-gray-800 italic mb-10 max-w-lg"
         >
-          "Semua akan baik-baik saja. Cantik itu butuh waktu untuk mekar. Kamu sudah luar biasa, dan aku akan selalu ada di sini menemani, apapun jalannya."
+          &quot;Semua akan baik-baik saja. Cantik itu butuh waktu untuk mekar. Kamu sudah luar biasa, dan aku akan selalu ada di sini menemani, apapun jalannya.&quot;
         </motion.p>
 
         <motion.div

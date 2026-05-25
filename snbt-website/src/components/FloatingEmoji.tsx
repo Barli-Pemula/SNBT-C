@@ -18,6 +18,7 @@ export default function FloatingEmoji() {
       delay: Math.random() * 5,
       duration: 10 + Math.random() * 10,
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setElements(newElements);
   }, []);
 

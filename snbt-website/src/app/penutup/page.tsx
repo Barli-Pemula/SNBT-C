@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { dataPacar } from "@/lib/config";
 
@@ -50,7 +49,7 @@ export default function PenutupPage() {
         className="flex flex-col items-center text-center mb-16"
       >
         <p className="text-lg italic text-gray-600 mb-6 font-heading max-w-md">
-          "Setiap hal baik butuh waktu. Jangan pernah ngerasa gagal cuma dari satu hasil ujian."
+          &quot;Setiap hal baik butuh waktu. Jangan pernah ngerasa gagal cuma dari satu hasil ujian.&quot;
         </p>
 
         <button 
