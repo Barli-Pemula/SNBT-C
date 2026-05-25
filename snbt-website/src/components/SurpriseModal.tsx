@@ -38,7 +38,7 @@ export default function SurpriseModal() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="glass-card-strong p-8 max-w-sm w-full relative z-10 text-center flex flex-col items-center gap-4"
+            className="bg-white border-2 border-gray-200 rounded-[24px] shadow-2xl p-8 max-w-sm w-full relative z-10 text-center flex flex-col items-center gap-4"
           >
             <div className="text-5xl animate-bounce mb-2">✉️</div>
             <h2 className="text-2xl font-bold text-gradient">Halo Sayang!</h2>
