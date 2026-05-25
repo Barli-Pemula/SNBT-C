@@ -33,7 +33,7 @@ export default function HasilPage() {
         <p className="text-xl text-gray-700 mb-8 leading-relaxed">
           Semua kerja kerasmu terbayar. Kamu luar biasa, dan aku selalu tahu kamu bisa melakukannya.
         </p>
-        <div className="w-full max-w-xs aspect-[3/4] rounded-2xl mb-8 relative border-4 border-gray-100 shadow-md overflow-hidden bg-gray-50">
+        <div className="w-full max-w-xs h-40 rounded-2xl mb-8 relative border-4 border-gray-100 shadow-md overflow-hidden bg-gray-50">
           <Image 
             src="/images/Snapchat-2033389452.jpg" 
             alt="Foto Kemenangan" 
@@ -48,6 +48,7 @@ export default function HasilPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
+          className="text-lg font-medium text-gray-800 italic mb-16 max-w-lg"
         >
           &quot;Semua akan baik-baik saja. Cantik itu butuh waktu untuk mekar. Kamu sudah luar biasa, dan aku akan selalu ada di sini menemani, apapun jalannya.&quot;
         </motion.p>
