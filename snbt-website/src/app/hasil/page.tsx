@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Confetti from "react-confetti";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import Image from "next/image";
 
 export default function HasilPage() {
   const { width, height } = useWindowSize();
@@ -32,8 +33,13 @@ export default function HasilPage() {
         <p className="text-xl text-gray-700 mb-8 leading-relaxed">
           Semua kerja kerasmu terbayar. Kamu luar biasa, dan aku selalu tahu kamu bisa melakukannya.
         </p>
-        <div className="w-full max-w-xs h-40 bg-[var(--color-soft-pink-light)] rounded-2xl mb-8 flex items-center justify-center border-2 border-[var(--color-peach)] overflow-hidden">
-            <div className="text-6xl animate-bloom">🌸</div>
+        <div className="w-full max-w-xs aspect-[3/4] rounded-2xl mb-8 relative border-4 border-gray-100 shadow-md overflow-hidden bg-gray-50">
+          <Image 
+            src="/images/Snapchat-2033389452.jpg" 
+            alt="Foto Kemenangan" 
+            fill 
+            className="object-cover hover:scale-105 transition-transform duration-500" 
+          />
         </div>
 
         <div className="w-full h-px bg-gray-200 my-6"></div>
