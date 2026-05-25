@@ -33,12 +33,12 @@ export default function HasilPage() {
         <p className="text-xl text-gray-700 mb-8 leading-relaxed">
           Semua kerja kerasmu terbayar. Kamu luar biasa, dan aku selalu tahu kamu bisa melakukannya.
         </p>
-        <div className="w-full max-w-xs h-40 rounded-2xl mb-8 relative border-4 border-gray-100 shadow-md overflow-hidden bg-gray-50">
+        <div className="w-full max-w-xs h-52 rounded-2xl mb-8 relative border-4 border-gray-100 shadow-md overflow-hidden bg-gray-50">
           <Image 
             src="/images/Snapchat-2033389452.jpg" 
             alt="Foto Kemenangan" 
             fill 
-            className="object-cover hover:scale-105 transition-transform duration-500" 
+            className="object-cover object-[center_15%] hover:scale-105 transition-transform duration-500" 
           />
         </div>
 
