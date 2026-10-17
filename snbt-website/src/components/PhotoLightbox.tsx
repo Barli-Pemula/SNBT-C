@@ -1,70 +1,87 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useEffect } from "react";
 
-interface PhotoLightboxProps {
-  photo: { src: string; caption: string } | null;
+type Props = {
+  items: { src: string; label: string }[];
+  index: number;
   onClose: () => void;
-  onNext: () => void;
-  onPrev: () => void;
-}
+  onNavigate: (next: number) => void;
+};
 
-export default function PhotoLightbox({ photo, onClose, onNext, onPrev }: PhotoLightboxProps) {
-  if (!photo) return null;
+export default function PhotoLightbox({
+  items,
+  index,
+  onClose,
+  onNavigate,
+}: Props) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onNavigate((index + 1) % items.length);
+      if (e.key === "ArrowLeft")
+        onNavigate((index - 1 + items.length) % items.length);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [index, items.length, onClose, onNavigate]);
+
+  const item = items[index];
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-          onClick={onClose}
+    <div
+      className="lightbox-backdrop flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Foto: ${item.label}`}
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-full max-w-[min(96vw,1100px)] flex-col items-center gap-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image
+          src={item.src}
+          alt={item.label}
+          width={1200}
+          height={1500}
+          className="max-h-[78vh] w-auto object-contain"
+          priority
         />
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col items-center"
-        >
-          <button 
-            onClick={onClose}
-            className="absolute -top-12 right-0 text-white hover:text-[var(--color-peach)] text-xl p-2"
+        <div className="flex w-full items-center justify-between gap-4 text-[length:var(--step-small)] text-bg">
+          <button
+            type="button"
+            onClick={() => onNavigate((index - 1 + items.length) % items.length)}
+            className="px-3 py-2 text-accent-ink transition-opacity duration-[var(--t-hover)] hover:opacity-70"
+            aria-label="Foto sebelumnya"
           >
-            Tutup ✕
+            Sebelumnya
           </button>
-          
-          <div className="relative w-full h-[60vh] sm:h-[70vh] bg-black/20 rounded-lg overflow-hidden">
-            <Image
-              src={photo.src}
-              alt="Gallery photo"
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 800px"
-              priority
-            />
-          </div>
-          
-          <div className="mt-6 text-center w-full flex items-center justify-between">
-            <button 
-              onClick={onPrev}
-              className="text-white hover:text-[var(--color-peach)] p-2 text-2xl"
-            >
-              ←
-            </button>
-            <div className="flex-1"></div>
-            <button 
-              onClick={onNext}
-              className="text-white hover:text-[var(--color-peach)] p-2 text-2xl"
-            >
-              →
-            </button>
-          </div>
-        </motion.div>
+          <span className="text-surface">
+            {item.label} · {index + 1}/{items.length}
+          </span>
+          <button
+            type="button"
+            onClick={() => onNavigate((index + 1) % items.length)}
+            className="px-3 py-2 text-accent-ink transition-opacity duration-[var(--t-hover)] hover:opacity-70"
+            aria-label="Foto berikutnya"
+          >
+            Berikutnya
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute -top-12 right-0 px-3 py-2 text-accent-ink transition-opacity duration-[var(--t-hover)] hover:opacity-70"
+        >
+          Tutup
+        </button>
       </div>
-    </AnimatePresence>
+    </div>
   );
 }
